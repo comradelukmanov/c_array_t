@@ -85,6 +85,10 @@ void *c_arr_get(const c_array_t *p_self, size_t idx)
 
 void c_arr_set(const c_array_t *p_self, size_t idx, const void *p_data)
 {
+	if (idx >= p_self->size_) {
+		return;	
+	}
+
 	for (size_t i = 0; i < p_self->type_size_; i += sizeof(char)) {
 		*(char *) (p_self->p_buffer_ + i + idx * p_self->type_size_) = *(char *) (p_data + i); 
 	}
