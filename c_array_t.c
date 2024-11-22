@@ -46,9 +46,7 @@ c_array_t *c_arr_init_from(size_t type_size, const void *p_src, size_t size)
 
 c_array_t *c_arr_copy(const c_array_t *p_other)
 {
-	c_array_t *c_array = c_arr_init_from(p_other->type_size_, p_other->p_buffer_, p_other->size_);
-	
-	return c_array;
+	return c_arr_init_from(p_other->type_size_, p_other->p_buffer_, p_other->size_);
 }
 
 
