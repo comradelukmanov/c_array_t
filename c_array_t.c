@@ -58,7 +58,7 @@ void c_arr_copy_assign(c_array_t *p_self, const c_array_t *p_other)
 		return;
 	}
 
-	c_arr_destroy(p_self);
+	free(p_self->p_buffer_);
 	*p_self = *temp;
 	free(temp);
 }
@@ -101,11 +101,10 @@ void *c_arr_at(const c_array_t *p_self, size_t idx)
 
 	if (idx < p_self->size_) {
 		arr_elem = c_arr_get(p_self, idx); 
+		return arr_elem;
 	} else {
-		exit(1);
+		return NULL;
 	}
-
-	return arr_elem;
 }
 
 
