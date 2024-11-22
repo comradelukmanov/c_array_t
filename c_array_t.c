@@ -52,7 +52,15 @@ c_array_t *c_arr_copy(const c_array_t *p_other)
 
 void c_arr_copy_assign(c_array_t *p_self, const c_array_t *p_other)
 {
-	*p_self = *c_arr_copy(p_other); 
+	c_array_t *temp = c_arr_copy(p_other);
+	
+	if (temp == NULL) {
+		return;
+	}
+
+	c_arr_destroy(p_self);
+	*p_self = *temp;
+	free(temp);
 }
 
 
