@@ -23,7 +23,7 @@ int main()
 	assert(arr1->size_ == 2); // Проверка размера
 	assert(*(int *) arr1->p_buffer_ == x); // Проверка значения (первого элемента)
 
-	c_arr_destroy(arr1); // Очистка массива
+	c_arr_destroy(arr1);
 
 	// Создание массива из элементов другого массива
 	int arr[] = {1, 2, 3};
@@ -36,6 +36,8 @@ int main()
 	assert(arr2->size_ == arr1->size_); // Проверка размера
 	assert(*(int *) arr1->p_buffer_ == *(int *) arr2->p_buffer_); // Проверка значения (первого
 																  // элемента)
+	c_arr_destroy(arr1);
+	c_arr_destroy(arr2);
 	
 	// Копирование одного массива в другой 
 	int a = 4;
@@ -60,6 +62,8 @@ int main()
 	int e = 9;
 	c_arr_set(arr1, 3, &e);
 	assert(*(int *) c_arr_get(arr1, 3) == e); // Проверка изменения
+
+	c_arr_destroy(arr1);
 
 	// Получение элемента по индексу через at
 	int f = 5;
@@ -90,14 +94,17 @@ int main()
 	c_arr_fill(arr1, &h);
 	assert(*(int *) c_arr_get(arr1, 2) == h);
 	
-	// Обмен значений двух массивов
 	c_arr_destroy(arr1);
-	c_arr_destroy(arr2);
+
+	// Обмен значений двух массивов
 	int i = 5;
 	int j = 2;
+
 	arr1 = c_arr_init_size_val(sizeof(int), 10, &i);
 	arr2 = c_arr_init_size_val(sizeof(int), 10, &j);
+	
 	c_arr_swap(arr1, arr2);
+
 	assert(*(int *) c_arr_get(arr1, 2) == j);
 	assert(*(int *) c_arr_get(arr2, 2) == i);
 
@@ -105,8 +112,10 @@ int main()
 	assert(c_arr_equal(arr1, arr2, c_cmp_int) == 0);
 	assert(c_arr_not_equal(arr1, arr2, c_cmp_int) != 0);
 	
-	// Вывод значения массива
 	c_arr_destroy(arr1);
+	c_arr_destroy(arr2);
+	
+	// Вывод значения массива
 	int k[5] = {1, 2, 3, 2, 1};
 	arr1 = c_arr_init_from(sizeof(int), k, 5);
 	c_arr_print(arr1, c_print_int);
