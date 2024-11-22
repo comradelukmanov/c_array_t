@@ -60,9 +60,13 @@ void c_arr_copy_assign(c_array_t *p_self, const c_array_t *p_other)
 
 void c_arr_destroy(c_array_t *p_self)
 {
-	free(p_self->p_buffer_);
-	p_self->type_size_ = 0;
-	p_self->size_ = 0;
+	if (p_self != NULL) {
+		free(p_self->p_buffer_);
+		p_self->type_size_ = 0;
+		p_self->size_ = 0;
+		p_self->p_buffer_ = NULL;
+		free(p_self);
+	}
 }
 
 
