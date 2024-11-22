@@ -8,13 +8,11 @@ int main()
 	// Создание массива нулевого размера
 	c_array_t *arr1 = c_arr_init(sizeof(int));
 	assert(arr1->size_ == 0); // Проверка размера
-
 	c_arr_destroy(arr1);
 
 	// Создание массива из трех элементов
 	arr1 = c_arr_init_size(sizeof(int), 3);
 	assert(arr1->size_ == 3); // Проверка размера
-
 	c_arr_destroy(arr1);
 
 	// Создание массива заполненного значением x
@@ -22,7 +20,6 @@ int main()
 	arr1 = c_arr_init_size_val(sizeof(int), 2, &x);
 	assert(arr1->size_ == 2); // Проверка размера
 	assert(*(int *) arr1->p_buffer_ == x); // Проверка значения (первого элемента)
-
 	c_arr_destroy(arr1);
 
 	// Создание массива из элементов другого массива
@@ -34,8 +31,7 @@ int main()
 	// Копирование массива
 	c_array_t *arr2 = c_arr_copy(arr1);
 	assert(arr2->size_ == arr1->size_); // Проверка размера
-	assert(*(int *) arr1->p_buffer_ == *(int *) arr2->p_buffer_); // Проверка значения (первого
-																  // элемента)
+	assert(*(int *) arr1->p_buffer_ == *(int *) arr2->p_buffer_); // Проверка значения (первого элемента)
 	c_arr_destroy(arr1);
 	c_arr_destroy(arr2);
 	
@@ -46,9 +42,7 @@ int main()
 	arr2 = c_arr_init_size_val(sizeof(int), 3, &b);
 	c_arr_copy_assign(arr1, arr2);
 	assert(arr1->size_ == arr2->size_);
-	assert(*(int *) arr1->p_buffer_ == *(int *) arr2->p_buffer_); // Проверка значения (первого
-																  // элемента)
-
+	assert(*(int *) arr1->p_buffer_ == *(int *) arr2->p_buffer_); // Проверка значения (первого элемента)
 	c_arr_destroy(arr1);
 	c_arr_destroy(arr2);
 
@@ -62,7 +56,6 @@ int main()
 	int e = 9;
 	c_arr_set(arr1, 3, &e);
 	assert(*(int *) c_arr_get(arr1, 3) == e); // Проверка изменения
-
 	c_arr_destroy(arr1);
 
 	// Получение элемента по индексу через at
@@ -93,7 +86,6 @@ int main()
 	int h = 22;
 	c_arr_fill(arr1, &h);
 	assert(*(int *) c_arr_get(arr1, 2) == h);
-	
 	c_arr_destroy(arr1);
 
 	// Обмен значений двух массивов
@@ -120,6 +112,8 @@ int main()
 	arr1 = c_arr_init_from(sizeof(int), k, 5);
 	c_arr_print(arr1, c_print_int);
 	printf("\n");
+
+	c_arr_destroy(arr1);
 
 	return 0;
 }
