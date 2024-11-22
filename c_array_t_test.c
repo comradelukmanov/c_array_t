@@ -75,7 +75,7 @@ int main()
 	assert(c_arr_get(arr1, 0) == c_arr_front(arr1));
 
 	// Получение и проверка последнего элемента
-	assert(c_arr_get(arr1, arr1->size_) == c_arr_back(arr1));
+	assert(c_arr_get(arr1, arr1->size_ - 1) == c_arr_back(arr1));
 
 	// Получение и проверка адреса массива
 	assert(c_arr_data(arr1) == arr1->p_buffer_);

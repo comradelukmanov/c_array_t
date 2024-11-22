@@ -103,7 +103,7 @@ void *c_arr_front(const c_array_t *p_self)
 
 void *c_arr_back(const c_array_t *p_self)
 {
-	return c_arr_get(p_self, p_self->size_);
+	return c_arr_get(p_self, p_self->size_ - 1);
 }
 
 
