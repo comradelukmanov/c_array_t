@@ -141,9 +141,9 @@ void c_arr_fill(c_array_t *p_self, const void *p_data)
 
 void c_arr_swap(c_array_t *p_self, c_array_t *p_other)
 {
-	c_array_t temp_arr = *c_arr_copy(p_self);
-	c_arr_copy_assign(p_self, p_other);
-	c_arr_copy_assign(p_other, &temp_arr);
+	c_array_t temp = *p_self;
+	*p_self = *p_other;
+	*p_other = temp;
 }
 
 
